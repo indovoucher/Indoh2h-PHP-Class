@@ -9,7 +9,10 @@ Contoh Penggunaannya sebagai berikut :
 <?php 
 
 include "indoh2h.php"; 
-$h2h = new Indoh2h("indovoucher","876sg8765ds53siug98h2nn");
+$h2h = new Indoh2h("indovoucher","876sg8765ds53siug98h2nn"); // (YOUR_USERNAME, YOUR_APIKEY)
+
+$balance = $h2h->check_balance();
+print_r($balance);
 
 ?>
 ```
