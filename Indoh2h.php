@@ -220,10 +220,7 @@ error_reporting(E_ALL);
       return $this->curl_post('/telkom',$data_post);
     }
 
-    function vgame()
-    {
-      
-    }
+    
   }
 
 ?>
