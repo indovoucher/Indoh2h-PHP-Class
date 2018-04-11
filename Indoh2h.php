@@ -9,7 +9,7 @@ error_reporting(E_ALL);
     {
       $this->url = 'https://api.indoh2h.com/h2h';
       $this->username = $auth['api_username'];
-      $this->api_key = $auth['api_key']
+      $this->api_key = $auth['api_key'];
     }
 
     function curl_post($end_point,$data_post)
@@ -135,7 +135,7 @@ error_reporting(E_ALL);
       return $this->curl_post('/pln_prepaid',$data_post);
     }
 
-    function pln_postaid_inquiry($number)
+    function pln_postpaid_inquiry($number)
     {
       $data_post = array(
                       'username' => $this->username,
@@ -147,7 +147,7 @@ error_reporting(E_ALL);
       return $this->curl_post('/pln_postpaid',$data_post);
     }
 
-    function pln_postaid_payment($inquiry_id,$number,$nominal,$trx_ref)
+    function pln_postpaid_payment($inquiry_id,$number,$nominal,$trx_ref)
     {
       $data_post = array(
                       'username' => $this->username,
@@ -197,7 +197,7 @@ error_reporting(E_ALL);
                       'username' => $this->username,
                       'api_key' => $this->api_key,
                       'action' => 'inquiry',
-                      'code' => $code
+                      'code' => $code,
                       'number' => $number
                     );
 
@@ -220,7 +220,7 @@ error_reporting(E_ALL);
       return $this->curl_post('/telkom',$data_post);
     }
 
-    
+
   }
 
 ?>

@@ -2,7 +2,7 @@
 
 include "indoh2h.php";
 
-$auth = array('api_username' => 'indovoucher', 'api_key' => '876sg8765ds53siug98h2nn');
+$auth = array('api_username' => 'pratamapayment', 'api_key' => 'f0119ff8a151b096b026782c244ccaf01b2e4562');
 $h2h = new Indoh2h($auth);
 
 echo "<pre>";
@@ -31,8 +31,11 @@ echo "<pre>";
 // $pln_prepaid_pricelist = $h2h->pln_prepaid_pricelist(); // ()
 // print_r($pln_prepaid_pricelist);
 
-$pln_prepaid_purchase = $h2h->pln_prepaid_purchase('PLN20','56503031991','TRX-52'); // (CODE,NUMBER,TRX_REF)
-print_r($pln_prepaid_purchase);
+// $pln_prepaid_purchase = $h2h->pln_prepaid_purchase('PLN20','56503031991','TRX-52'); // (CODE,NUMBER,TRX_REF)
+// print_r($pln_prepaid_purchase);
+
+$pln_postpaid_inquiry = $h2h->pln_postpaid_inquiry('530000000001');
+print_r($pln_postpaid_inquiry);
 
 
 
