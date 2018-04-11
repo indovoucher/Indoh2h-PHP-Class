@@ -2,7 +2,8 @@
 
 include "indoh2h.php";
 
-$h2h = new Indoh2h("pratamapayment","f0119ff8a151b096b026782c244ccaf01b2e4562");
+$auth = array('api_username' => 'indovoucher', 'api_key' => '876sg8765ds53siug98h2nn');
+$h2h = new Indoh2h($auth);
 
 echo "<pre>";
 
