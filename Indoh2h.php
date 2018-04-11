@@ -5,11 +5,11 @@ error_reporting(E_ALL);
 
     private $url, $username, $api_key;
 
-    function __construct($username,$api_key)
+    function __construct($auth)
     {
       $this->url = 'https://api.indoh2h.com/h2h';
-      $this->username = $username;
-      $this->api_key = $api_key;
+      $this->username = $auth['api_username'];
+      $this->api_key = $auth['api_key']
     }
 
     function curl_post($end_point,$data_post)
@@ -133,6 +133,91 @@ error_reporting(E_ALL);
                     );
 
       return $this->curl_post('/pln_prepaid',$data_post);
+    }
+
+    function pln_postaid_inquiry($number)
+    {
+      $data_post = array(
+                      'username' => $this->username,
+                      'api_key' => $this->api_key,
+                      'action' => 'inquiry',
+                      'number' => $number
+                    );
+
+      return $this->curl_post('/pln_postpaid',$data_post);
+    }
+
+    function pln_postaid_payment($inquiry_id,$number,$nominal,$trx_ref)
+    {
+      $data_post = array(
+                      'username' => $this->username,
+                      'api_key' => $this->api_key,
+                      "action" => "payment",
+                      "inquiry_id" => $inquiry_id,
+                      "number" => $number,
+                      "nominal" => $nominal,
+                      "trx_ref" => $trx_ref
+                    );
+
+      return $this->curl_post('/pln_postpaid',$data_post);
+    }
+
+    function bpjs_kes_inquiry($number,$jml_bln,$loket = array())
+    {
+      $data_post = array(
+                      'username' => $this->username,
+                      'api_key' => $this->api_key,
+                      'action' => 'inquiry',
+                      'number' => $number,
+                      'jml_bln' => $jml_bln,
+                      'loket' => $loket
+                    );
+
+      return $this->curl_post('/bpjs_kes',$data_post);
+    }
+
+    function bpjs_kes_payment($inquiry_id,$number,$nominal,$trx_ref)
+    {
+      $data_post = array(
+                      'username' => $this->username,
+                      'api_key' => $this->api_key,
+                      "action" => "payment",
+                      "inquiry_id" => $inquiry_id,
+                      "number" => $number,
+                      "nominal" => $nominal,
+                      "trx_ref" => $trx_ref
+                    );
+
+      return $this->curl_post('/bpjs_kes',$data_post);
+    }
+
+    function telkom_inquiry($code,$number)
+    {
+      $data_post = array(
+                      'username' => $this->username,
+                      'api_key' => $this->api_key,
+                      'action' => 'inquiry',
+                      'code' => $code
+                      'number' => $number
+                    );
+
+      return $this->curl_post('/telkom',$data_post);
+    }
+
+    function telkom_payment($code,$inquiry_id,$number,$nominal,$trx_ref)
+    {
+      $data_post = array(
+                      'username' => $this->username,
+                      'api_key' => $this->api_key,
+                      "action" => "payment",
+                      "inquiry_id" => $inquiry_id,
+                      "code" => $code,
+                      "number" => $number,
+                      "nominal" => $nominal,
+                      "trx_ref" => $trx_ref
+                    );
+
+      return $this->curl_post('/telkom',$data_post);
     }
 
   }
